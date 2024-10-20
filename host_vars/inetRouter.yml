@@ -1,0 +1,10 @@
+---
+nmcli_connections:
+  - conn_name: central-inet
+    ifname: eth1
+    ip4: '192.168.255.1/30'
+    routes4:
+      - '192.168.0.0/22 192.168.255.14'
+      - '192.168.255.0/24 192.168.255.14'
+
+nftables_template: '{{ inventory_hostname }}'

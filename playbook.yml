@@ -1,0 +1,28 @@
+---
+- name: Configure centralServer
+  hosts: centralServer
+  become: true
+  gather_facts: false
+  roles:
+    - nginx
+
+- name: Configure routers
+  hosts:
+    - inetRouter
+    - inet2Router
+    - centralRouter
+    - office2Router
+    - office1Router
+  become: true
+  gather_facts: false
+  roles:
+    - ip_forward
+    - rt_tables
+    - nftables
+
+- name: Common provision
+  hosts: all
+  become: true
+  gather_facts: false
+  roles:
+    - network_config

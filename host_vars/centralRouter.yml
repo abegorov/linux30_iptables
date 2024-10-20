@@ -1,0 +1,39 @@
+---
+rt_tables_map:
+  '200': inet2
+
+nmcli_connections:
+  - conn_name: System eth0
+    ifname: eth0
+    gw4_ignore_auto: true
+  - conn_name: central-inet
+    ifname: eth1
+    ip4: '192.168.255.2/30'
+    gw4: '192.168.255.1'
+  - conn_name: central-inet2
+    ifname: eth2
+    ip4: '192.168.255.14/30'
+    gw4: '192.168.255.13'
+    routes4_extended:
+      - ip: '0.0.0.0/0'
+        next_hop: '192.168.255.13'
+        table: 200
+    routing_rules4:
+      - priority 0 from 192.168.0.2 sport 80 table 200
+  - conn_name: central-office2
+    ifname: eth3
+    ip4: '192.168.255.5/30'
+    routes4: ['192.168.1.0/24 192.168.255.6']
+  - conn_name: central-office1
+    ifname: eth4
+    ip4: '192.168.255.9/30'
+    routes4: ['192.168.2.0/24 192.168.255.10']
+  - conn_name: central-directors
+    ifname: eth5
+    ip4: '192.168.0.1/28'
+  - conn_name: central-hardware
+    ifname: eth6
+    ip4: '192.168.0.33/28'
+  - conn_name: central-wifi
+    ifname: eth7
+    ip4: '192.168.0.65/26'

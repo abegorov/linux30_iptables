@@ -1,0 +1,9 @@
+---
+- name: Configure routing tables
+  ansible.builtin.template:
+    src: rt_tables
+    dest: /etc/iproute2/rt_tables
+    owner: root
+    group: root
+    mode: '0644'
+  when: rt_tables_map is defined
