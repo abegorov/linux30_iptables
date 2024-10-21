@@ -1,0 +1,8 @@
+---
+- name: Install portknock script
+  ansible.builtin.template:
+    src: portknock.sh
+    dest: /usr/local/bin/portknock.sh
+    owner: root
+    group: root
+    mode: '0755'
