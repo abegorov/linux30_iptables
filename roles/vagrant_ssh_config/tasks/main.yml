@@ -1,0 +1,27 @@
+---
+- name: Update hosts file
+  ansible.builtin.template:
+    src: hosts
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Update vagrant ssh keys
+  ansible.builtin.copy:
+    src: '{{ playbook_dir }}/.vagrant/machines/{{
+      item }}/virtualbox/private_key'
+    dest: /home/vagrant/.ssh/{{ item }}.key
+    owner: vagrant
+    group: vagrant
+    mode: '0600'
+  no_log: true
+  loop: '{{ groups["all"] }}'
+
+- name: Update vagrant ssh config
+  ansible.builtin.template:
+    src: config
+    dest: /home/vagrant/.ssh/config
+    owner: vagrant
+    group: vagrant
+    mode: '0600'

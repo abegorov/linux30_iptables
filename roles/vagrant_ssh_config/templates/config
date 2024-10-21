@@ -1,0 +1,6 @@
+{% for host in groups['all'] %}
+{% if hostvars[host].ip4 is defined %}
+Host {{ host }}
+  IdentityFile /home/vagrant/.ssh/{{ host }}.key
+{% endif %}
+{% endfor %}

@@ -1,0 +1,8 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+127.0.1.1 {{ inventory_hostname }}.internal {{ inventory_hostname }}
+{% for host in groups['all'] %}
+{% if hostvars[host].ip4 is defined %}
+{{ hostvars[host].ip4 }} {{ host }}.internal {{ host }}
+{% endif %}
+{% endfor %}
