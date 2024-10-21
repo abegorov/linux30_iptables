@@ -26,3 +26,5 @@
   gather_facts: false
   roles:
     - network_config
+    - vagrant_ssh_config
+    - portknock_script
