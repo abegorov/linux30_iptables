@@ -1,4 +1,6 @@
 ---
+ip4: '192.168.255.1'
+
 nmcli_connections:
   - conn_name: central-inet
     ifname: eth1

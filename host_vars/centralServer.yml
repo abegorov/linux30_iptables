@@ -1,4 +1,6 @@
 ---
+ip4: '192.168.0.2'
+
 nmcli_connections:
   - conn_name: System eth0
     ifname: eth0

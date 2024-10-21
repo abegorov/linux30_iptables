@@ -1,4 +1,6 @@
 ---
+ip4: '192.168.0.1'
+
 rt_tables_map:
   '200': inet2
 
@@ -19,7 +21,7 @@ nmcli_connections:
         next_hop: '192.168.255.13'
         table: 200
     routing_rules4:
-      - priority 0 from 192.168.0.2 sport 80 table 200
+      - priority 200 from 192.168.0.2 sport 80 table 200
   - conn_name: central-office2
     ifname: eth3
     ip4: '192.168.255.5/30'
