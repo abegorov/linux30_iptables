@@ -10,5 +10,5 @@
 #
 #1      inr.ruhep
 {% for id, name in rt_tables_map.items() %}
-{{ "%-8s" | format(id) }}{{ name }}
+{{ "%-7s" | format(id) }} {{ name }}
 {% endfor %}
